@@ -1,0 +1,115 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% Nombre: 		Prncipios de Git y GitHub.tex
+% Fecha:  		24-01-2014
+% Autor:  		osvaldo@salazarysanchez.com
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\Chapter%
+         % Titulo como aparece al comenzar el articulo
+         {Principios de Git y GitHub}%
+         % Titulo como aparece en el índice
+         {Principios de Git y GitHub}%
+         % Resumen que aparece debajo del titulo
+         {Para colaborar con la presente revista, se debe de trabajar de manera colaborativa y para ello es necesario una manera de mantener lo escrito, entre ello el código, siempre disponible y las herramientas Git y GitHub son las adecuadas para ésta tarea. A continiación aprenderemos la manera básica de trabajar con estas herramientas.}%
+         % Autor
+         {Osvaldo R. Salazar S.}%
+         % Imagen que aparece después del resumen 
+         %{Bucar-imagen.png}
+
+% % % Definición de uso de dos columnas.
+\begin{multicols}{2}
+
+\section*{Introducción}
+A continuación se explicará, de manera básica por que todas son muy extensas, las herramientas a usar: Github, Git, LaTeX y tu editor de textos libre favorito, para el caso del presente artículo usaremos nano.\par
+Lo aquí tratado será en base a Debian Wheezy, pero son libres de usar la distribución GNU/Linux que ustedes deseen.\par
+
+\section*{Comenzamos}
+Una de las primeras cosas que se tienen que realizar es crear una cuenta en GitHub: GitHub es una plataforma de desarrollo colaborativo de software. Se enfoca hacia la cooperación entre desarrolladores para la difusión de software y el soporte al usuario; y aloja proyectos utilizando el sistema de control de versiones Git. El código se almacena de forma pública, aunque también se puede hacer de forma privada, creando una cuenta de pago.\par
+Al tener nuestra cuenta en GitHub nos aseguramos el poder subir todo el código y colaboraciones que hagamos, no solo de éste proyecto, sino de aquellos en los que tu desees participar o compartir.\par
+Lo anterior en la web; en nuestra computadora instalamos git con:\par
+\Code
+   {Instalar Git}
+   {
+   \\*
+   \# apt-get install git
+   }
+\\
+
+Git es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente. Hay algunos proyectos de mucha relevancia que ya usan Git, en particular, el grupo de programación del núcleo Linux.\par
+Una vez instalado, configuramos Git con los siguientes comando:\par
+\Code
+   {Configurar Git}
+   {
+   \\*
+	\$ git config –global user.name \"Tu-Nombre-O-Alias\"\\
+	\$ git config –global user.email tu-email\@ejemplo.com\\
+   }
+
+Una vez configurado Git, creamos y/o nos desplazamos a nuestro directorio de trabajo y bajamos el ejemplo que use en la platica con el siguiente comando:\par
+
+Con el anterior comando bajamos una copia en nuestro equipo y accedemos a el directorio con:\par
+
+Aquí y en todo momento podemos usar Git con el útil parámetro status:\par
+
+Y también podemos ver la ayuda de Git con el clásico man:\par
+
+Muy bien, ahora creamos un branch (rama de trabajo), que es donde empezaremos a trabajar nuestro artículo, debe de ser un nombre corto y que no incluya espacios en su nombre, lo hacemos con el comando:\par
+
+En éste ejemplo estoy usando el branch Editorial. El branch debe de existir en GitHub. Por default existe el branch Master y pueden existir la cantidad que se desee de branchs; se recomienda usar un branch para cada artículo que se redacte. Podemos ver los branchs en nuestro equipo con el comando:\par
+
+Con el anterior comando se mostraran los branchs que tengamos y en branch en que estamos ubicados lo veremos con un asterisco al inicio:\par
+
+Podemos cambiar del branch master al branch de trabajo para nuestro artículo, en este caso, Editorial, con el comando:\par
+
+Una forma de explicar como se trabajan los branchs con Git lo encontré con un fragmento de la película “Volver al futuro II” en dónde el Doc. Emmet Brown explica a McFly el porque de su “presente”\par
+
+Ya en nuestro branch, en nuestra rama de trabajo, empezamos a escribir nuestro artículo con nuestro editor de texto libre favorito, en éste caso, usare nano:\par
+
+Cuando terminemos de escribir, grabamos con Ctrl-x y salimos con Ctrl-o. Ahora ya existe un archivo y podemos ver el resultado de nuestro trabajo con git status que nos regresara algo similar a:\par
+
+En el mensaje podemos leer que se ha agregado un nuevo archivo, siempre que agreguemos un nuevo archivo (texto, imagen, etcétera) lo veremos listado en un mensaje similar al anterior y usaremos el parametro add de una de las 2 formas siguientes:\par
+
+Con el primer comando agregamos en el seguimiento que realiza Git todos los cambios que realizamos en los archivos y con el segundo comando solo agregamos los cambios de un solo archivo. Si ejecutamos nuevamente git status veremos un mensaje similar a el siguiente:\par
+
+Si ya tenemos terminado el texto, o mejor aún, si ya terminamos el día de trabajo, usaremos el comando git con los parámetros commit y -m:\par
+
+Con lo anterior estamos aceptando los cambios que aceptamos con el parámetro add; podemos leerlo en el mensaje que nos arroja. Nuevamente usando el comando git status (si, lo usaremos mucho, pero es útil, creanme ;) ) veremos el siguiente mensaje:\par
+
+Si en éste momento ya terminamos el trabajo del día, es recomendable subir nuestro trabajo al servidor GitHub con el siguiente comando:\par
+
+Con el cual nos preguntará primero nuestro usuario y después nuestra contraseña, ambos de GitHub:\par
+
+Una vez que ingresemos estos datos, veremos los mensajes indicando que ya se subieron los cambios a GitHub:\par
+
+Hasta este momento, todo bien :) Si vas a retomar el trabajo al día siguiente, con las posibles contribuciones de otra persona (correcciones ortográficas, agregados, etcétera), usaremos el siguiente comando:\par
+
+Y continuamos trabajando con nuestro artículo :)\par
+
+Es cierto: ésta parte, la referente a Git y GitHub es la mas larga, por eso en la platica que se dio en el GULAG fue practica. Al dominar lo anterior, el resto es pan comido ;)\par
+
+Con tu editor favorito, nano en este caso, ya puedes empezar a redactar el contenido de tu artículo y grabarlo en el directorio que corresponde. También puedes guardar en ese directorio las capturas de imágenes que correspondan a tu articulo y subir todo, texto e imágenes, con el comando git push.\par
+
+Una de las ventajas de trabajar de esta manera es que tu te puedes dedicar a solo escribir y subirlo al servidor de GitHub, y otro compañero puede hacer las capturas de pantalla que crea convenientes e indicar como tal en el texto.\par
+
+Otra ventaja es que en el servidor de GitHub, y localmente con el comando git log, puedes ver quienes han colaborado con la revista, quienes han colaborado con determinado artículo: una revista colaborativa y abierta en toda la extensión de la palabra ;)\par
+
+Hasta este punto ya tenemos un texto e imágenes en un servidor en la red y que puede ser corregido en su ortografía o complementado. Ya solo falta el copiar el texto en las partes correspondientes de la plantilla de la cuál se habla en otra artículo de ésta misma revista.\par
+
+
+\Code
+   {Códigos}
+   {
+   \\*
+   \\
+   \\
+   }
+
+% % % INICIA FIRMA DE ARTICULO
+\begin{flushright}
+Osvaldo R. Salazar S. \\
+osvaldo@salazarysanchez.com
+\end{flushright}
+% % % FINALIZA FIRMA DE ARTICULO
+
+\end{multicols}
+% % % Fin de uso de dos columnas
