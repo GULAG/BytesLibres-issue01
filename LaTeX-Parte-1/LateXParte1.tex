@@ -1,0 +1,304 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% Nombre: 		LaTeX Parte 1.tex
+% Fecha:  		12-01-2014
+% Autor:  		jm@taquinux.com
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\Chapter%
+         % Titulo como aparece al comenzar el articulo
+         {\LaTeX{} Parte 1}%
+         % Titulo como aparece en el índice
+         {\LaTeX{} Parte 1 ?` Que hay detrás de Bytes Libres?}%
+         % Resumen que aparece debajo del titulo
+         {¿Qué hay detrás de Bytes Libres? como una revista
+         verdaderamente libre, aquí están las herramientas usadas
+         para dar formato y una breve explicación de como
+         utilizarlas.}%
+         % Autor
+         {José Miguel Jáuregui García}%
+         % Imagen que aparece después del resumen 
+         %{Tux.png}
+
+\paragraph{}Cuando queremos transmitir ideas a otras personas puede ser por motivos muy variados y podemos lograrlo usando medios y formas de comunicación igualmente variados: una llamada, un mensaje de texto, platicar en algún café, dibujos en servilletas y correo electrónico son parte de una enorme lista.
+\paragraph{}Si queremos plasmar ideas de forma mas formal como escribir una temida tesis, contribuir con un artículo o capítulo para una revista o libro respectivamente, tenemos una idea mas o menos clara de que es lo que queremos decir tecleamos nuestro documento y después nos pasamos un largo tiempo acomodando las imágenes donde deben de ir, verificando las referencias, cambiando palabras para que esas últimas dos palabras no se pasen a la siguiente página entre otras calamidades.
+\paragraph{}Estamos desaprovechando el tiempo y nos dan las dos de la mañana tratando de hacer que el documento tenga una buena presentación. ¿No sería bueno poder escribir sin preocuparnos por esos detalles? Solo marcar, donde comienza un capítulo, donde comienza una nueva sección, meter imágenes y de acuerdo a una plantilla, este texto se ajuste a los margenes, ponga tipos de letra correctos, genere tabla de contenido, enumere páginas, etc. Aquí es donde entra \LaTeX{}. Que de acuerdo con Wikipedia:
+
+\paragraph{} \textit{\LaTeX{}(escrito LaTeX en texto plano) es un sistema de composición de textos, orientado especialmente a la creación de libros, documentos científicos y técnicos que contengan fórmulas matemáticas.}
+\paragraph{} \textit{\LaTeX{} está formado por un gran conjunto de macros de TeX, escrito por Leslie Lamport en 1984, con la intención de facilitar el uso del lenguaje de composición tipográfica, creado por Donald Knuth. Es muy utilizado para la composición de artículos académicos, tesis y libros técnicos, dado que la calidad tipográfica de los documentos realizados con LaTeX es comparable a la de una editorial científica de primera línea.}
+\paragraph{} \textit{ \LaTeX{} es software libre bajo licencia LPPL.} \footnote{\href{http://es.wikipedia.org/wiki/LaTeX}{Wikipedia}}
+
+\paragraph{}Cumplida la típica definición tomada de Wikipedia, veamos con más detalle que es \LaTeX{}, que características lo diferencian de los procesadores de texto a los que estamos acostumbrados (p.ej. LibreOffice) y en que casos \LaTeX{}, nos permite ser mas eficientes. No hay que caer en la tentación de querer usar una nueva herramienta para hacer todo, un martillo sirve para poner clavos, tal vez abrir un hoyo en madera, pero si tratamos de apretar un tornillo phillips, nos estaríamos complicando las cosas, lo mismo ocurre con \LaTeX{}.
+\paragraph{}Los editores convencionales como Writer de LibreOffice son del tipo W.Y.S.I.W.Y.G. (lo que vez es lo que obtienes) donde lo que aparece en pantalla es lo que obtendremos al imprimir que son fáciles de aprender y de usar pero para trabajos grandes o de colaboración entramos en problemas como que cada quien usa versiones diferentes, que si yo use una fuente diferente, que si mi tamaño de hoja era carta y debía ser A4. \LaTeX{} por otra parte es W.Y.M.I.W.Y.G. (lo que describes es lo que obtienes), esto significa que el documento base contendrá etiquetas para definir capítulos, secciones, imágenes, referencias, etc. Y al compilar el documento, se usara la plantilla que hayamos definido para dar formato a cada parte de acuerdo a las etiquetas.
+\paragraph{} Los documentos base de \LaTeX{} son de tipo texto, cambiando solamente la extensión a tipo \texttt{.tex} y no se ve limitado por compatibilidad del software usando y permite reutilizar fácilmente una plantilla para dar formato a los documentos. Es por esto que \LaTeX{} es usado por las revistas científicas arbitradas para permitir que todos los artículos publicados sean consistentes en su presentación a lo largo de diferentes publicaciones.
+\paragraph{}Terminada una descripción muy general de qué es \LaTeX{} y sus ventajas, vamos a revisar las partes de \texttt{BytesLibres} que hacen, como modificarla y reutilizarla.
+
+\subsection*{Antes de Empezar}
+\paragraph{} Antes de adentrarnos más es necesario aclarar que este artículo no pretende ser una guía definitiva de como usar
+\LaTeX{}, existen muchos paquetes para agregarle funcionalidades como escribir partituras, crear presentaciones, hacer dibujos
+animados en el borde de las paginas (tal como hacíamos con las libretas dibujando monitos mientras nos aburrían las clases) y
+tratar de abarcar todo sería fracaso.
+
+\subsection*{Software usado}
+\paragraph{}Existe diferentes programas para editar y crear documentos en \LaTeX{} algunos de paga, la mayoría gratuitos:
+% % % INICIA NOTA
+\Remark
+   % Titulo
+   {Software:}
+   % Contenido
+   {
+   \begin{itemize}
+   \item \textbf{MiKTeX} para Windows \href{http://miktex.org/}{http://miktex.org/}
+   \item \textbf{MacTeX} para Mac \href{http://tug.org/mactex/}{http://tug.org/mactex/}
+   \item \textbf{Texmaker} Linux, Mac y Windows \href{http://www.xm1math.net/texmaker/}{http://www.xm1math.net/texmaker/}
+   \end{itemize}
+   }
+% % % TERMINA NOTA
+
+ para Windows tenemos \textbf{MiKTeX} \footnote{\href{http://miktex.org/}{MiKTeX}}, para Mac \footnote{\href{http://tug.org/mactex/}{MacTeX}} y para Linux \textbf{Texmaker} \footnote{\href{http://www.xm1math.net/texmaker/}{Texmaker}} en este último disponible en los repositorios y para instarlo solo necesitamos hacer: \texttt{sudo apt-get install texmaker texlive texlive-lang-spanish}. Para la configuración del diccionario de Texmaker es mejor recurrir a una referencia como \href{http://robustiana.com/118-texmakermanual}{Manual de usuario: Texmaker en español}
+
+\paragraph{}Teniendo el software instalado, obtenemos la revista de GitHub como se explica en otro articulo de esta revista y revisando la carpeta donde se descargo vemos varios archivos:
+\begin{itemize}
+	\item \texttt{BytesLibres.tex} Se encarga de hacer el manejo detrás de líneas para configurar los colores, bordes, tipos de letra, no tenemos que preocuparnos por el.
+	\item \texttt{Formato.tex} Este es el documento principal que se encarga de importar la plantilla y es donde comenzaremos a trabajar.
+	\item \texttt{<Archivo.tex>} El resto de los archivos con extensión \texttt{.tex} son los artículos que forman parte de la revista.
+	\item \texttt{<Imágenes>} \texttt{.jpg, .png, .eps} las imágenes de la portada, pie de página e imagen de fondo de la tabla de contenido van aquí.
+	\item \texttt{<Carpetas>} Para evitar tener mezcladas las imágenes de cada artículos lo mejor es que cada autor ademas de su archivo \texttt{.tex} proporcione una carpeta con las imágenes que contiene su aportación.
+	\item \texttt{<Otros>} El resto son archivos intermedios generados por \LaTeX{} durante la producción del documento.
+\end{itemize}
+
+
+\subsection*{Formato.tex}
+\subsubsection*{Comentarios y etiquetas}
+\paragraph{} En un archivo típico de \LaTeX{} es normal encontrar líneas comentadas, que se distinguen por comenzar con \textbf{\%}
+muy útiles para poner notas cortas al momento de escribir. Y bloques grandes rodeados por
+\textbf{$\setminus$begin$\{$comment$\}$} y \textbf{$\setminus$end$\{$comment$\}$} muy útiles en caso de que caso de que
+decidamos escribir una sección grande pero mantener la original para futuras referencia o queramos regresar al original.
+\paragraph{} Los comandos de \LaTeX{} son fáciles de encontrar comienzan con \textbf{$\setminus$} y casi siempre seguidos de llaves \textbf{$\{$} y \textbf{$\}$}.
+
+\paragraph{} \LaTeX{} consiste en dos grandes partes la primera es el preámbulo donde se define el tipo de documento, paquetes a usar, tamaño de hoja y los macros, que proporcionan las grandes ventajas como el poder crear un inicio de capitulo usando
+$\setminus$Chapter o incluir código usando $\setminus$Code y que automáticamente el código quede enmarcado y formateado correctamente. La otra parte es el cuerpo del documento donde agregamos lo que queremos que contenga el archivo final.
+\subsubsection*{Preambulo}
+\paragraph{} \textbf{ $\setminus\{$BytesLibres.tex$\}$ }se encarga de importar el preámbulo para dar un formato de salida que corresponde a esta Revista.
+\paragraph{} \textbf{ $\setminus$rfoot$\{\setminus$includegraphics[width=1.5cm]$\{$gulaglogo.jpg$\}\}$ }aquí se define la imagen que se usa al pie de página, solo debemos cambiar \texttt{gulaglogo.jpg} por el nombre de la imagen que queramos usar al pie de página (p.ej. logotipo de la escuela).
+\paragraph{} Lo anterior define el formato que recibirá el documento después de ser procesado y ajustado, solo resta agregar el contenido.
+\subsubsection*{Documento}
+\paragraph{} Todo lo contenido entre \textbf{ $\setminus$begin$\{$document$\}$} y \textbf{ $\setminus$end$\{$document$\}$} sera procesado de acuerdo a las reglas del preámbulo y formara parte del documento final, aquí debemos indicar la portada, la tabla de contenido y los artículos:
+\begin{itemize}
+	\item \textbf{Portada} usando \textbf{$\setminus$BytesLibresPortada$\{$Portada.jpg$\}$} importamos la imagen que queremos usar como portada y la ponemos al inicio del documento a tamaño completo. Podemos hacer que \LaTeX{} genere de manera automática la portada pero esta es una de las partes donde vale la pena dedicar algo de tiempo en GIMP o InkScape para tener un diseño vistoso.
+	\item \textbf{Tabla de Contenido} la agregamos usando $\setminus$tableofcontents$\{$gulagfondo.jpg$\}\{$10.0cm$\}$ donde \textbf{gulagfondo.jpg} es la imagen de de fondo que para la tabla de contenido y el segundo campo \textbf{10.0cm} es la altura de la imagen. La imagen que se usara ya debe estar en tonos pastel.
+	\item Finalmente solo resta agregar las aportaciones que incluiremos en la revista usando \\ \textbf{$\setminus$input$\{$Archivo.tex$\}$} agregamos cada archivo \texttt{.tex}.
+\end{itemize}
+
+\subsection*{Generar la revista}
+\paragraph{} Usando Texmaker es fácil generar el documento basta con dar clic en \texttt{Herramientas$>>$PDFLaTeX} o \texttt{F6} y para ver el resultado \texttt{Herramientas$>>$Ver PDF}, \texttt{F7} o abrir el PDF directamente desde la carpeta.
+
+\subsection*{Escribiendo un artículo}
+\paragraph{} Hasta el momento hemos visto las partes que componen el código de la revista, como compilarla en nuestra máquina, como cambiar la imagen de portada, tabla de contenido y pie de página. Ahora vamos a ver como hacer un artículo para Bytes Libres y como una buena forma de aprender es haciendo, a continuación ejemplos de lo que se puede hacer con \LaTeX{}, lo que no tiene mucho sentido si se observa solo el PDF pero al ver el \texttt{.tex} se comprende ;)
+
+\section*{Inicio de artículo}
+En la cabecera de cara artículo encontraras que comienza con $\setminus$Chapter seguido
+de 4 o 5 corchetes y dentro de cada uno debe de ir:
+\begin{enumerate}
+	\item \textbf{Primero} Titulo del artículo como aparecerá al comenzar el artículo.
+	\item \textbf{Segundo} Titulo del artículo como aparecerá en la tabla de contenido.
+	\item \textbf{Tercero} Si se desea un pequeño resumen que aparecerá debajo del título de
+	artículo.
+	\item \textbf{Cuarto} El nombre de quien realizo el artículo o la fuente de donde 
+	fue tomado.
+	\item \textbf{\textit{Quinto (Opcional)}} Una imagen que aparecerá debajo del título,
+	práctico en caso de que el artículo trate sobre hardware ;)
+\end{enumerate}
+
+
+\subsubsection*{Formatos de letra}
+\textbf{Negritas: Vive libre, sé libre, usa Software Libre} \\
+\textit{Itálicas: Vive libre, sé libre, usa Software Libre} \\
+\textsc{Versalita: Vive libre, sé libre, usa Software Libre} \\
+\texttt{Máquina de escribir: Vive libre, sé libre, usa Software Libre} \\
+\href{http://gulag.org.mx/}{Este es un enlace a una página} \\
+
+\subsubsection*{Caracteres especiales}
+Caracteres comunes que pueden dar problemas al tratar de ponerlos en un documento:
+Diagonal / , 									Diagonal invertida $\setminus$ ,
+Guion - ,										Admiración  ¡ ! ,
+Interrogación ¿ ?,							Igual = ,
+Or | ,											Dos puntos : ,
+Apostrofe ' ,									Menor que < ,
+Mayor que > ,									Asterisco $\ast$ ,
+Estrella $\star$ ,							Guion bajo $\_$ ,
+Moneda \$ ,										Llaves $\{$ y $\}$
+.
+
+\subsubsection*{Lista}
+% % % INICIA LISTA
+\begin{itemize}
+   \item \textbf{Primera} Línea 1
+   \item \textbf{Segunda} Línea 2
+   \item \textbf{Tres} Línea 3
+\end{itemize}
+% % % TERMINA LISTA
+
+\subsubsection*{Lista numerada}
+% % % INICIA LISTA NUMERADA
+\begin{enumerate}
+   \item \textbf{Primera} Línea 1
+   \item \textbf{Segunda} Línea 2
+   \item \textbf{Tres} Línea 3
+\end{enumerate}
+% % % TERMINA LISTA NUMERADA
+
+\subsubsection*{Notas}
+% % % INICIA NOTA
+\Remark
+   % Titulo
+   {Titulo de la nota}
+   % Contenido
+   {Si deseas resaltar algo que mejor forma de ponerlo como una nota dentro
+   de un marco con un fondo diferente, recuerda que deben ser cortas.}
+% % % TERMINA NOTA
+
+\subsubsection*{Código}
+Para los bloques de código los saltos de línea son manuales y se hacen agregando
+doble diagonal al final de la línea hay un máximo de 37 caracteres por articulo
+de dos columnas y 75 para articulo de columna sencilla.
+% % % INICIA CUADRO DE CODIGO
+\Code
+   {Script}
+   {
+   \\*
+   000000000111111111122222222223333333333444444444455555555556666666666777777\\
+   123456789012345678901234567890123456789012345678901234567890123456789012345\\
+  }
+% % % TERMINA CUADRO DE CODIGO
+
+\subsubsection*{Tabla}
+% % % INICIO DE TABLA
+\rowcolors{1}{TableColor1}{TableColor2}
+\begin{tabular}{| l | c | c |}
+\hline
+Encabezado & & \\
+\hline
+1 & 2 & 3  \\
+1 & 2 & 3  \\
+1 & 2 & 3  \\
+\hline
+\end{tabular}
+% % % FIN DE TABLA
+
+\subsubsection*{Imagen}
+% % % INICIA CUADRO DE IMAGEN
+\Figure
+   % Ancho
+   {7cm}
+   % Imagen
+   {Portada.jpg}
+   %Titulo
+   {Taqüinux en CPMX2013}
+   %Texto
+   {\textbf{CPMX2013}
+   Taqüinux haciendo fila para entrar a Campus Party 2013
+   }
+% % % FINALIZA CUADRO DE IMAGEN
+
+\subsubsection*{Imagen completa}
+Algunas ocasiones necesitaremos incluir una imagen que ocupe toda la página, eso se hace con:
+\Code
+   {LaTeX}
+   {
+   \\*
+   $\setminus$FigurePage$\{$Portada.jpg$\}$
+   }
+% % % INICIA IMAGEN EN PAGINA COMPLETA
+\FigurePage{Portada.jpg}
+% % % FINALIZA IMAGEN EN PAGINA COMPLETA
+
+\subsubsection*{Diagramas de llaves}
+% % % INICIA DIAGRAMA DE LLAVES
+\begin{tikzpicture}
+\node (main) {Text here};
+	\begin{scope}[node distance=1em]
+	    \node [right=of main] (t2) {Texto 2};
+	    \node [above=of t2]   (t1) {Texto 1};
+	    \node [below=of t2]   (t3) {Texto 3};
+	\end{scope}
+
+   \draw[decorate,decoration={brace,mirror}] (t1.north west) -- (t3.south west);
+
+	\begin{scope}[node distance=.5em]
+	    \node [right =of t1,yshift= .5em] (st2) {Sub texto 1.2};
+	    \node [right =of t1,yshift=-.5em] (st3) {Sub texto 1.3};
+	    \node [right =of t1,yshift=  1.5em] (st1) {Sub texto 1.1};
+	    \node [right =of t1,yshift= -1.5em] (st4) {Sub texto 1.4};
+	\end{scope}
+   \draw[decorate,decoration={brace,mirror}] (st1.north west) -- (st4.south west);
+\end{tikzpicture}
+% % % FINALIZA DIAGRAMA DE LLAVES
+
+\subsubsection*{Diagrama de estados}
+% % % INICIA DIAGRAMA DE ESTADO
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block]                                     (INICIO)       {Inicialización};
+    \node [cloud, left of=INICIO]                     (USUARIO)      {Usuario};
+    \node [cloud, right of=INICIO]                    (SISTEMA)      {Sistema};
+    \node [block, below of=INICIO]                    (IDENTIFICAR)  {Identificar candidatos};
+    \node [block, below of=IDENTIFICAR]               (EVALUAR)      {Evaluar candidatos};
+    \node [block, left of=EVALUAR, node distance=3cm] (ACTUALIZA)    {Actualizar candidatos};
+    \node [decision, below of=EVALUAR]                (DECIDE)       {¿Es mejor la nueva elección?};
+    \node [block, below of=DECIDE, node distance=3cm] (FIN)          {Fin};
+    % Draw edges
+    \path [line] (INICIO) -- (IDENTIFICAR);
+    \path [line] (IDENTIFICAR) -- (EVALUAR);
+    \path [line] (EVALUAR) -- (DECIDE);
+    \path [line] (DECIDE) -| node [near start] {Si} (ACTUALIZA);
+    \path [line] (ACTUALIZA) |- (IDENTIFICAR);
+    \path [line] (DECIDE) -- node {No}(FIN);
+    \path [line,dashed] (USUARIO) -- (INICIO);
+    \path [line,dashed] (SISTEMA) -- (INICIO);
+    \path [line,dashed] (SISTEMA) |- (EVALUAR);
+\end{tikzpicture}
+% % % FINALIZA DIAGRAMA DE ESTADO
+
+\subsubsection*{Notas al pie de página}
+Para poner una nota al pie de pagina solo se agrega \footnote{NOTA AL PIE}
+el contador de los pie de pagina se reinicia en cada pagina.
+\Code
+   {LaTeX}
+   {
+   \\*
+   $\setminus$footnote\{NOTA AL PIE\}
+   }
+
+\subsubsection*{Notas al final del artículo}
+Y esta una referencia aparecerá al final del documento. \endnote[1]{NOTA AL FIN}
+recomendable números arábigos y letras para que no se confundan con las notas
+al pie de página.
+\Code
+   {LaTeX}
+   {
+   \\*
+   $\setminus$endnote[1]\{NOTA AL FIN\}
+   }
+
+para reutilizar la referencia se debe de usar \endnotemark[1] y se creara la
+marca sin duplicarla en la lista del final.
+\Code
+   {LaTeX}
+   {
+   \\*
+   $\setminus$endnotemark[1]
+   }
+
+\paragraph{} Y como un articulo no es suficiente para poner ejemplos de cada cosa utilizada dentro de Bytes Libres, en
+la siguiente página encontraras la siguiente parte de este artículo en cuya fuente aparece entre otras cosas el como
+cambiar de una columna a dos columnas el formato del artículo.
+
+% % % Llamado a creación de referencias y reinicio de contadores.
+\theendnotes
+\setcounter{endnote}{0}
+
+% % % Para agregar una firma se hace descomentariando y editando lo siguiente
+%\begin{flushright}
+%José Miguel Jáuregui García \\
+%taquinux@gmail.com
+%\end{flushright}
