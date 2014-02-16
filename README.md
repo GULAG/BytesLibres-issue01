@@ -1,4 +1,4 @@
--BytesLibres-issue01
+BytesLibres-issue01
 ====================
 
-Número 1 de la revista Bytes Libres
+Número 1 de la revista Bytes Libres.
