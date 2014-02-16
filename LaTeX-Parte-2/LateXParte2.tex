@@ -1,0 +1,87 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% Nombre: 		LaTeX Parte 2.tex
+% Fecha:  		12-01-2014
+% Autor:  		jm@taquinux.com
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\Chapter%
+         % Titulo como aparece al comenzar el articulo
+         {\LaTeX{} Parte 2}%
+         % Titulo como aparece en el índice
+         {\LaTeX{} Parte 2 Mas detalles}%
+         % Resumen que aparece debajo del titulo
+         {Continuación del articulo anterior para mostrar algunas funcionalidades
+         adicionales}%
+         % Autor
+         {José Miguel Jáuregui García}%
+         % Imagen que aparece después del resumen 
+         %{Tux.png}
+
+% % % Definición de uso de dos columnas.
+\begin{multicols}{2}
+
+\section*{Artículo a dos columnas}
+El formato de dos columnas es más fácil de leer para hacer que el artículo aparezca
+con este formato después de haber definido la cabecera del artículo debe de ir
+rodeado por los siguientes comandos:
+\Code
+   {LaTeX}
+   {
+   \\*
+   $\setminus$begin$\{$multicols$\}\{$2$\}$ \\
+   <contenido del articulo> \\
+   $\setminus$end$\{$multicols$\}\{$2$\}$
+   }
+
+\section*{Saltos de línea y espacios en blanco}
+\LaTeX{} nos brinda la facilidad de que podemos poner tantos espacios entre las palabras
+del texto como queramos, poner lineas entre los párrafos y al compilarse elimina esos
+espacios en blanco para tener un formato uniforme, pero en ocasiones es necesario incluir
+un salto de línea o espacios en blanco entre palabras eso se puede hacer con:
+\Code
+   {LaTeX}
+   {
+   \\*
+   $\setminus\setminus$ Para forzar un salto de línea\\
+   $\setminus$: Para poner un espacio en \: blanco \\
+   }
+
+\section*{Firma de documento}
+Para agregar una firma hay que editar las líneas que aparecen casi al finalizar el artículo,
+se pueden agregar tantas líneas como creamos necesarias solo hay que agregar los saltos
+de línea necesarios para que aparezca con el formato correcto.
+\Code
+   {LaTeX}
+   {
+   \\*
+	$\setminus$begin$\{$flushright$\}$ \\
+	Nombre \\
+	correoelectronico \\
+	$\setminus$end$\{$flushright$\}$
+   }
+
+
+\section*{Codigo}
+Para los bloques de código los saltos de línea son manuales y se hacen agregando
+doble diagonal al final de la línea hay un máximo de 37 caracteres por articulo
+de dos columnas y 75 para articulo de columna sencilla.
+% % % INICIA CUADRO DE CODIGO
+\Code
+   {Script}
+   {
+   \\*
+   0000000001111111111222222222233333333\\
+   1234567890123456789012345678901234567\\
+   }
+% % % TERMINA CUADRO DE CODIGO
+
+% % % INICIA FIRMA DE ARTICULO
+\begin{flushright}
+José Miguel Jáuregui García \\
+taquinux@gmail.com
+\end{flushright}
+% % % FINALIZA FIRMA DE ARTICULO
+
+
+\end{multicols}
+% % % Fin de uso de dos columnas
