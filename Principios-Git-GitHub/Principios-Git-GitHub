@@ -1,0 +1,131 @@
+La presente revista, para la cual se propuso el nombre de “Bytes Libres”, trabajará de manera libre y abierta con herramientas libres y, por supuesto, con la creatividad y el conocimiento de cada uno de los participantes.
+
+A continuación se explicará, de manera básica por que todas son muy extensas, las herramientas a usar: GNU/Linux, Github, Git, LaTeX y tu editor de textos libre favorito.
+
+Lo aquí tratado será en base a Debian Wheezy, pero son libres de usar la distribución GNU/Linux que ustedes deseen.
+
+Una de las primeras cosas que se tienen que realizar es crear una cuenta en GitHub: GitHub es una plataforma de desarrollo colaborativo de software. Se enfoca hacia la cooperación entre desarrolladores para la difusión de software y el soporte al usuario; y aloja proyectos utilizando el sistema de control de versiones Git. El código se almacena de forma pública, aunque también se puede hacer de forma privada, creando una cuenta de pago.
+
+Al tener nuestra cuenta en GitHub nos aseguramos el poder subir todo el código y colaboraciones que hagamos, no solo de éste proyecto, sino de aquellos en los que tu desees participar o compartir.
+
+Lo anterior en la web, en nuestra computadora instalamos git con:
+
+# apt-get install git 
+
+Git es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente. Hay algunos proyectos de mucha relevancia que ya usan Git, en particular, el grupo de programación del núcleo Linux.
+
+Una vez instalado, configuramos Git con los siguientes comando:
+
+$ git config –global user.name “Tu-Nombre-O-Alias” 
+$ git config –global user.email tu-email@ejemplo.com 
+
+Una vez configurado Git, creamos y/o nos desplazamos a nuestro directorio de trabajo y bajamos el ejemplo que use en la platica con el siguiente comando:
+
+$ git clone https://github.com/ChicoXXX/BytesLibres.git 
+
+Con el anterior comando bajamos una copia en nuestro equipo y accedemos a el directorio con:
+
+$ cd BytesLibres 
+
+Aquí y en todo momento podemos usar Git con el útil parámetro status:
+
+$ git status 
+
+Y también podemos ver la ayuda de Git con el clásico man:
+
+$ man git 
+
+Muy bien, ahora creamos un branch (rama de trabajo), que es donde empezaremos a trabajar nuestro artículo, debe de ser un nombre corto y que no incluya espacios en su nombre, lo hacemos con el comando:
+
+$ git branch — Editorial 
+
+En éste ejemplo estoy usando el branch Editorial. El branch debe de existir en GitHub. Por default existe el branch Master y pueden existir la cantidad que se desee de branchs; se recomienda usar un branch para cada artículo que se redacte. Podemos ver los branchs en nuestro equipo con el comando:
+
+$ git branch 
+
+Con el anterior comando se mostraran los branchs que tengamos y en branch en que estamos ubicados lo veremos con un asterisco al inicio:
+
+  ArticuloEjemplo
+  borrador
+  Editorial
+* master
+
+Podemos cambiar del branch master al branch de trabajo para nuestro artículo, en este caso, Editorial, con el comando:
+
+$ git checkout Editorial 
+
+Una forma de explicar como se trabajan los branchs con Git lo encontré con un fragmento de la película “Volver al futuro II” en dónde el Doc. Emmet Brown explica a McFly el porque de su “presente”
+
+Ya en nuestro branch, en nuestra rama de trabajo, empezamos a escribir nuestro artículo con nuestro editor de texto libre favorito, en éste caso, usare nano:
+
+$ nano -w editorial.txt 
+
+Cuando terminemos de escribir, grabamos con Ctrl-x y salimos con Ctrl-o. Ahora ya existe un archivo y podemos ver el resultado de nuestro trabajo con git status que nos regresara algo similar a:
+
+# On branch editorial
+# Untracked files:
+# (use “git add …” to include in what will be committed)
+#
+# editorial.txt
+nothing added to commit but untracked files present (use “git add” to track)
+
+En el mensaje podemos leer que se ha agregado un nuevo archivo, siempre que agreguemos un nuevo archivo (texto, imagen, etcétera) lo veremos listado en un mensaje similar al anterior y usaremos el parametro add de una de las 2 formas siguientes:
+
+$ git add . 
+o
+$ git add editorial.txt 
+
+Con el primer comando agregamos en el seguimiento que realiza Git todos los cambios que realizamos en los archivos y con el segundo comando solo agregamos los cambios de un solo archivo. Si ejecutamos nuevamente git status veremos un mensaje similar a el siguiente:
+
+# On branch editorial
+# Changes to be committed:
+# (use “git reset HEAD …” to unstage)
+#
+# new file: editorial.txt
+#
+
+Si ya tenemos terminado el texto, o mejor aún, si ya terminamos el día de trabajo, usaremos el comando git con los parámetros commit y -m:
+
+$ git commit -m “Terminada la redacción de Editorial.”
+
+1 file changed, 1 insertion(+)
+create mode 100644 editorial.txt
+
+Con lo anterior estamos aceptando los cambios que aceptamos con el parámetro add; podemos leerlo en el mensaje que nos arroja. Nuevamente usando el comando git status (si, lo usaremos mucho, pero es útil, creanme ;) ) veremos el siguiente mensaje:
+
+# On branch editorial
+nothing to commit (working directory clean)
+
+Si en éste momento ya terminamos el trabajo del día, es recomendable subir nuestro trabajo al servidor GitHub con el siguiente comando:
+
+$ git push 
+
+Con el cual nos preguntará primero nuestro usuario y después nuestra contraseña, ambos de GitHub:
+
+Username for ‘https://github.com’: Tu-Usuario 
+Password for ‘https://Tu-Usuario@github.com’: 
+
+Una vez que ingresemos estos datos, veremos los mensajes indicando que ya se subieron los cambios a GitHub:
+
+Counting objects: 4, done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 309 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/ChicoXXX/BytesLibres.git
+2f9a120..cbf5f7f editorial -> editorial
+
+Hasta este momento, todo bien :) Si vas a retomar el trabajo al día siguiente, con las posibles contribuciones de otra persona (correcciones ortográficas, agregados, etcétera), usaremos el siguiente comando:
+
+$ git pull 
+
+Y continuamos trabajando con nuestro artículo :)
+
+Es cierto: ésta parte, la referente a Git y GitHub es la mas larga, por eso en la platica que se dio en el GULAG fue practica. Al dominar lo anterior, el resto es pan comido ;)
+
+Con tu editor favorito, nano en este caso, ya puedes empezar a redactar el contenido de tu artículo y grabarlo en el directorio que corresponde. También puedes guardar en ese directorio las capturas de imágenes que correspondan a tu articulo y subir todo, texto e imágenes, con el comando git push.
+
+Una de las ventajas de trabajar de esta manera es que tu te puedes dedicar a solo escribir y subirlo al servidor de GitHub, y otro compañero puede hacer las capturas de pantalla que crea convenientes e indicar como tal en el texto.
+
+Otra ventaja es que en el servidor de GitHub, y localmente con el comando git log, puedes ver quienes han colaborado con la revista, quienes han colaborado con determinado artículo: una revista colaborativa y abierta en toda la extensión de la palabra ;)
+
+Hasta este punto ya tenemos un texto e imágenes en un servidor en la red y que puede ser corregido en su ortografía o complementado. Ya solo falta el copiar el texto en las partes correspondientes de la plantilla echa en LaTeX por José Miguel Jáuregui García referentes a el título, contenido, imágenes, etcétera.
